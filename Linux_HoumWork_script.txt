@@ -1,0 +1,38 @@
+shust@DESKTOP-0TOAGHL MINGW64 /
+$ ssh -i ~/.ssh/id_rsa ec2-user@linux.telran-edu.de
+Enter passphrase for key '/c/Users/shust/.ssh/id_rsa':
+Last login: Tue May 16 17:15:23 2023 from p5799f7a0.dip0.t-ipconnect.de
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+9 package(s) needed for security, out of 22 available
+Run "sudo yum update" to apply all updates.
+[ec2-user@ip-172-31-33-20 ~]$ cd /opt/040423_evening/shustrova
+[ec2-user@ip-172-31-33-20 shustrova]$ touch .testscript.sh
+[ec2-user@ip-172-31-33-20 shustrova]$ nano .testscript.sh
+[ec2-user@ip-172-31-33-20 shustrova]$ chmod +x .testscript.sh
+[ec2-user@ip-172-31-33-20 shustrova]$ ./.testscript.sh
+your name is: ec2-user
+your working directory is: /opt/040423_evening/shustrova
+Number of ssh users: 0
+done
+You have new mail in /var/spool/mail/ec2-user
+[ec2-user@ip-172-31-33-20 shustrova]$ chmod g-r .testscript.sh
+[ec2-user@ip-172-31-33-20 shustrova]$ chmod a-x .testscript.sh
+[ec2-user@ip-172-31-33-20 shustrova]$ ls -la /opt/040423_evening/shustrova
+total 4
+drwxrwxr-x  2 ec2-user ec2-user  28 May 16 17:16 .
+drwxrwxr-x 16 ec2-user ec2-user 237 May 15 19:30 ..
+-rw--w-r--  1 ec2-user ec2-user 144 May 16 17:17 .testscript.sh
+[ec2-user@ip-172-31-33-20 shustrova]$ cat /opt/040423_evening/shustrova/.testscript.sh
+#!/bin/bash
+echo "your name is: $USER"
+echo "your working directory is: $PWD"
+echo "Number of ssh users: $(who | grep ssh | wc -l)"
+echo "done"
+[ec2-user@ip-172-31-33-20 shustrova]$ ./.testscript.sh
+-bash: ./.testscript.sh: Permission denied
+[ec2-user@ip-172-31-33-20 shustrova]$
